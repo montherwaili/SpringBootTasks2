@@ -1,13 +1,14 @@
 package com.cl.mysqldemo.services;
 
+import com.cl.mysqldemo.dto.StudentDTO;
 import com.cl.mysqldemo.entities.School;
 import com.cl.mysqldemo.entities.Student;
 import com.cl.mysqldemo.repositories.SchoolRepository;
 import com.cl.mysqldemo.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
