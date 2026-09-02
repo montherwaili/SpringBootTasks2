@@ -22,6 +22,9 @@ public class StudentDTO {
     private Long schoolId;
 
     public static StudentDTO convertToDTO(Student entity) {
+        if (entity == null) {
+            return null;
+        }
 
         StudentDTO dto = StudentDTO.builder()
                 .studentId(entity.getId())
