@@ -26,11 +26,10 @@ public class StudentService {
         this.schoolRepository = schoolRepository;
     }
 
-    public Long addStudent(String name, String major, String gender,
-                           String phoneNumber, String parentName, Long schoolId) {
-        School school = schoolService.getById(schoolId);
-        if(school == null || school.getIsActive() == false){
-            return -1l;
+    // Add student
+    public StudentDTO addStudent(StudentDTO studentDTO) {
+        if (studentDTO == null || studentDTO.getSchoolId() == null) {
+            return null;
         }
         Student student = new Student();
         student.setName(name);
