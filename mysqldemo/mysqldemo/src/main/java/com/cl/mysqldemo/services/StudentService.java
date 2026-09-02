@@ -44,6 +44,18 @@ public class StudentService {
 
         Student savedStudent = studentRepository.save(student);
 
+        // protect if school is null
+        List<Student> studentList = school.getStudents();
+        if (studentList == null) {
+            studentList = new ArrayList<>();
+        }
+        studentList.add(savedStudent);
+        school.setStudents(studentList);
+        schoolRepository.save(school);
+
+        return StudentDTO.convertToDTO(savedStudent);
+    }
+
 
         return savedStudent.getId();
     }
