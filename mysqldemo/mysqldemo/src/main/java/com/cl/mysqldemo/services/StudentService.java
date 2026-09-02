@@ -84,6 +84,12 @@ public class StudentService {
         return true;
     }
 
+    // Soft Delete Student
+    public Boolean deleteStudent(Long id) {
+        Student student = getById(id);
+        if (student == null || Boolean.FALSE.equals(student.getIsActive())) {
+            return false;
+        }
 
         return savedStudent.getId();
     }
