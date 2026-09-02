@@ -56,6 +56,11 @@ public class StudentService {
         return StudentDTO.convertToDTO(savedStudent);
     }
 
+    // get by ID
+    public Student getById(Long id) {
+        return studentRepository.findById(id).orElse(null);
+    }
+
 
         return savedStudent.getId();
     }
