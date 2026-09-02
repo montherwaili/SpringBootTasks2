@@ -26,7 +26,7 @@ public class StudentDTO {
             return null;
         }
 
-        StudentDTO dto = StudentDTO.builder()
+        return StudentDTO.builder()
                 .studentId(entity.getId())
                 .studentName(entity.getName())
                 .gender(entity.getGender())
