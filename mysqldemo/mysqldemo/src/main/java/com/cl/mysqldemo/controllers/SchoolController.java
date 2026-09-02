@@ -1,7 +1,6 @@
 package com.cl.mysqldemo.controllers;
 
 import com.cl.mysqldemo.dto.SchoolDTO;
-import com.cl.mysqldemo.entities.School;
 import com.cl.mysqldemo.services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import java.util.List;
 @RequestMapping("school")
 public class SchoolController {
 
-    SchoolService schoolService;
+    private final SchoolService schoolService;
 
     @Autowired
     public SchoolController(SchoolService schoolService) {
