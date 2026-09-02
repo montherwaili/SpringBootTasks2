@@ -19,14 +19,15 @@ public class SchoolService {
         this.schoolRepository = schoolRepository;
     }
 
-    public Long createSchool(String name, String location) {
+    public SchoolDTO createSchool(SchoolDTO schoolDTO) {
         School school = new School();
+        school.setName(schoolDTO.getSchoolName());
+        school.setLocation(schoolDTO.getSchoolLocation());
         school.setIsActive(true);
         school.setCreatedDate(new Date());
-        school.setName(name);
-        school.setLocation(location);
-        school = schoolRepository.save(school);
-        return school.getId();
+
+        School savedSchool = schoolRepository.save(school);
+        return SchoolDTO.convertToDTO(savedSchool);
     }
 
     public List<School> getAllSchools() {
