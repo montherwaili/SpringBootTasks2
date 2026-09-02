@@ -15,11 +15,9 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    SchoolService schoolService;
-
-    StudentRepository studentRepository;
-
-    SchoolRepository schoolRepository;
+    private final SchoolService schoolService;
+    private final StudentRepository studentRepository;
+    private final SchoolRepository schoolRepository;
 
     @Autowired
     public StudentService(SchoolService schoolService, StudentRepository studentRepository, SchoolRepository schoolRepository) {
