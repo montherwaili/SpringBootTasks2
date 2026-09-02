@@ -1,15 +1,15 @@
 package com.cl.mysqldemo.dto;
 
-
 import com.cl.mysqldemo.entities.School;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SchoolDTO {
     private Long schoolId;
     private String schoolName;
