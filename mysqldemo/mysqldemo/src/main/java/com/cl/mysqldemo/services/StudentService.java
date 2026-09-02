@@ -61,6 +61,11 @@ public class StudentService {
         return studentRepository.findById(id).orElse(null);
     }
 
+    //get All
+    public List<Student> getAll() {
+        return studentRepository.findAll();
+    }
+
 
         return savedStudent.getId();
     }
