@@ -29,7 +29,10 @@ public class StudentDTO {
         return StudentDTO.builder()
                 .studentId(entity.getId())
                 .studentName(entity.getName())
+                .major(entity.getMajor())
                 .gender(entity.getGender())
+                .phoneNumber(entity.getPhoneNumber())
+                .parentName(entity.getParentName())
                 .build();
 
         return dto;
