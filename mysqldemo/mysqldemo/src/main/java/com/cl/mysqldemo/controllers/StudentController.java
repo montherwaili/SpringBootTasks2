@@ -39,3 +39,9 @@ public class StudentController {
         return StudentDTO.convertToDTO(students);
     }
 
+    // Update student
+    @PutMapping("update")
+    public Boolean updateStudent(@RequestParam Long id, @RequestBody StudentDTO studentDTO) {
+        return studentService.updateStudent(id, studentDTO);
+    }
+
