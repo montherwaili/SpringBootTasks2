@@ -35,11 +35,7 @@ public class SchoolService {
     }
 
     public School getById(Long id) {
-        Optional<School> school = schoolRepository.findById(id);
-        if (school.isPresent() && school.get().getIsActive()) {
-            return school.get();
-        }
-        return new School();
+        return schoolRepository.getById(id);
     }
 
     public School updateSchool(Long id, String name, String location) {
