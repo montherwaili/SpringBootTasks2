@@ -28,13 +28,14 @@ public class SchoolDTO {
     }
 
     public static List<SchoolDTO> convertToDTO(List<School> entityList) {
-
         List<SchoolDTO> dtos = new ArrayList<>();
-        for (School s : entityList) {
-            dtos.add(convertToDTO(s));
+        if (entityList != null) {
+            for (School s : entityList) {
+                SchoolDTO dto = convertToDTO(s);
+                if (dto != null) {
+                    dtos.add(dto);
+                }
+            }
         }
         return dtos;
     }
-
-}
-
