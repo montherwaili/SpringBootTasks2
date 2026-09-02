@@ -31,3 +31,11 @@ public class StudentController {
         Student student = studentService.getById(id);
         return StudentDTO.convertToDTO(student);
     }
+
+    // GetAll
+    @GetMapping("getAll")
+    public List<StudentDTO> getAll() {
+        List<Student> students = studentService.getAll();
+        return StudentDTO.convertToDTO(students);
+    }
+
