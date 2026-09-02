@@ -91,6 +91,9 @@ public class StudentService {
             return false;
         }
 
-        return savedStudent.getId();
+        student.setIsActive(false);
+        student.setUpdatedDate(new Date());
+        studentRepository.save(student);
+        return true;
     }
 }
