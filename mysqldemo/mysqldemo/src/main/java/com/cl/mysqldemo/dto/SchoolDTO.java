@@ -20,13 +20,11 @@ public class SchoolDTO {
             return null;
         }
 
-
-        SchoolDTO dto = SchoolDTO.builder()
+        return SchoolDTO.builder()
                 .schoolId(entity.getId())
                 .schoolName(entity.getName())
-                .schoollocation(entity.getLocation())
+                .schoolLocation(entity.getLocation())
                 .build();
-        return dto;
     }
 
     public static List<SchoolDTO> convertToDTO(List<School> entityList) {
