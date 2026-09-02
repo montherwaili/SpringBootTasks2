@@ -66,6 +66,24 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    //Update Student
+    public Boolean updateStudent(Long id, StudentDTO dto) {
+        Student student = getById(id);
+        if (student == null || Boolean.FALSE.equals(student.getIsActive())) {
+            return false;
+        }
+
+        if (dto.getStudentName() != null) student.setName(dto.getStudentName());
+        if (dto.getMajor() != null) student.setMajor(dto.getMajor());
+        if (dto.getGender() != null) student.setGender(dto.getGender());
+        if (dto.getPhoneNumber() != null) student.setPhoneNumber(dto.getPhoneNumber());
+        if (dto.getParentName() != null) student.setParentName(dto.getParentName());
+
+        student.setUpdatedDate(new Date());
+        studentRepository.save(student);
+        return true;
+    }
+
 
         return savedStudent.getId();
     }
