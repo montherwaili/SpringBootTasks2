@@ -34,10 +34,8 @@ public class SchoolController {
     }
 
     @PutMapping("update")
-    public SchoolDTO updateSchool(@RequestParam Long id,
-                               @RequestParam String name,
-                               @RequestParam String location) {
-        return SchoolDTO.convertToDTO(schoolService.updateSchool(id, name, location));
+    public SchoolDTO updateSchool(@RequestParam Long id, @RequestBody SchoolDTO schoolDTO) {
+        return schoolService.updateSchool(id, schoolDTO);
     }
 
     @DeleteMapping("deleteById")
