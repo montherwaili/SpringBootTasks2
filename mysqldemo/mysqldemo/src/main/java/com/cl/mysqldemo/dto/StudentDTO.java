@@ -1,9 +1,6 @@
 package com.cl.mysqldemo.dto;
 
 import com.cl.mysqldemo.entities.Student;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.*;
 
 import java.util.ArrayList;
