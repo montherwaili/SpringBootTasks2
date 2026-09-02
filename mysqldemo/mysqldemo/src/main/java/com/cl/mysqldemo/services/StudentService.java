@@ -41,12 +41,9 @@ public class StudentService {
         Student student = StudentDTO.toEntity(studentDTO);
         student.setIsActive(true);
         student.setCreatedDate(new Date());
+
         Student savedStudent = studentRepository.save(student);
 
-       List<Student> studentList = school.getStudents();
-       studentList.add(savedStudent);
-       school.setStudents(studentList);
-       schoolRepository.save(school);
 
         return savedStudent.getId();
     }
