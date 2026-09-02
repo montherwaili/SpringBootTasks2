@@ -24,3 +24,10 @@ public class StudentController {
     public StudentDTO addStudent(@RequestBody StudentDTO studentDTO) {
         return studentService.addStudent(studentDTO);
     }
+
+    // GetBYId
+    @GetMapping("getById")
+    public StudentDTO getById(@RequestParam Long id) {
+        Student student = studentService.getById(id);
+        return StudentDTO.convertToDTO(student);
+    }
