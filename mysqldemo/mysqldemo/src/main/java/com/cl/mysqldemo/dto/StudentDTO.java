@@ -45,4 +45,17 @@ public class StudentDTO {
         }
         return dtos;
     }
+
+
+    public static Student toEntity(StudentDTO dto) {
+        if (dto == null) return null;
+
+        Student student = new Student();
+        student.setName(dto.getStudentName());
+        student.setMajor(dto.getMajor());
+        student.setGender(dto.getGender());
+        student.setPhoneNumber(dto.getPhoneNumber());
+        student.setParentName(dto.getParentName());
+        return student;
+    }
 }
