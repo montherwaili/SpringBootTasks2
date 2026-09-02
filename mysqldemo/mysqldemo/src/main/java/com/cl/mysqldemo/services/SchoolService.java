@@ -11,7 +11,8 @@ import java.util.List;
 
 @Service
 public class SchoolService {
-    SchoolRepository schoolRepository;
+
+    private final SchoolRepository schoolRepository;
 
     @Autowired
     public SchoolService(SchoolRepository schoolRepository) {
