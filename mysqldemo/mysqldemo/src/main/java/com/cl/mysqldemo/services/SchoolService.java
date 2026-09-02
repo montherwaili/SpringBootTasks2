@@ -44,10 +44,11 @@ public class SchoolService {
             return null;
         }
         schoolToUpdate.setUpdatedDate(new Date());
-        schoolToUpdate.setName(name);
-        schoolToUpdate.setLocation(location);
-        schoolToUpdate = schoolRepository.save(schoolToUpdate);
-        return schoolToUpdate;
+        schoolToUpdate.setName(schoolDTO.getSchoolName());
+        schoolToUpdate.setLocation(schoolDTO.getSchoolLocation());
+
+        School updatedSchool = schoolRepository.save(schoolToUpdate);
+        return SchoolDTO.convertToDTO(updatedSchool);
     }
 
     public Boolean deleteById(Long id) {
