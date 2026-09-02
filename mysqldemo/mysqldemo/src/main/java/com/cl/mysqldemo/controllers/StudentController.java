@@ -19,15 +19,8 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    // add new student
     @PostMapping("add")
-    public Long addStudent(
-            @RequestParam String name,
-            @RequestParam String major,
-            @RequestParam String gender,
-            @RequestParam String phoneNumber,
-            @RequestParam String parentName,
-            @RequestParam Long schoolId
-    ){
-        return studentService.addStudent(name, major, gender, phoneNumber, parentName, schoolId);
+    public StudentDTO addStudent(@RequestBody StudentDTO studentDTO) {
+        return studentService.addStudent(studentDTO);
     }
-}
