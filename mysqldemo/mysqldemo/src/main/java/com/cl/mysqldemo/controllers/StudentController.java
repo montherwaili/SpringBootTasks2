@@ -45,3 +45,9 @@ public class StudentController {
         return studentService.updateStudent(id, studentDTO);
     }
 
+    // Delete Student
+    @DeleteMapping("delete")
+    public Boolean deleteStudent(@RequestParam Long id) {
+        return studentService.deleteStudent(id);
+    }
+}
