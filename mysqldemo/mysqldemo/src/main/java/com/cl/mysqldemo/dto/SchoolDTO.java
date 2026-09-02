@@ -13,10 +13,12 @@ import java.util.List;
 public class SchoolDTO {
     private Long schoolId;
     private String schoolName;
-    private String schoollocation;
-
+    private String schoolLocation;
 
     public static SchoolDTO convertToDTO(School entity) {
+        if (entity == null || entity.getId() == null) {
+            return null;
+        }
 
 
         SchoolDTO dto = SchoolDTO.builder()
