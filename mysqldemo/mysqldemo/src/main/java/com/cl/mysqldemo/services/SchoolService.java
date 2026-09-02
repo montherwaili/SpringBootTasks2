@@ -38,10 +38,10 @@ public class SchoolService {
         return schoolRepository.getById(id);
     }
 
-    public School updateSchool(Long id, String name, String location) {
+    public SchoolDTO updateSchool(Long id, SchoolDTO schoolDTO) {
         School schoolToUpdate = schoolRepository.getById(id);
         if (schoolToUpdate == null) {
-            return new School();
+            return null;
         }
         schoolToUpdate.setUpdatedDate(new Date());
         schoolToUpdate.setName(name);
