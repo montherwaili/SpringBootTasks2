@@ -31,13 +31,14 @@ public class StudentService {
         if (studentDTO == null || studentDTO.getSchoolId() == null) {
             return null;
         }
-        Student student = new Student();
-        student.setName(name);
-        student.setMajor(major);
-        student.setGender(gender);
-        student.setPhoneNumber(phoneNumber);
-        student.setPhoneNumber(parentName);
 
+
+        School school = schoolService.getById(studentDTO.getSchoolId());
+        if (school == null || Boolean.FALSE.equals(school.getIsActive())) {
+            return null;
+        }
+
+        Student student = StudentDTO.toEntity(studentDTO);
         student.setIsActive(true);
         student.setCreatedDate(new Date());
         Student savedStudent = studentRepository.save(student);
