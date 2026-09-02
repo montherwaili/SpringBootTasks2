@@ -34,18 +34,15 @@ public class StudentDTO {
                 .phoneNumber(entity.getPhoneNumber())
                 .parentName(entity.getParentName())
                 .build();
-
-        return dto;
     }
 
     public static List<StudentDTO> convertToDTO(List<Student> entityList) {
-
         List<StudentDTO> dtos = new ArrayList<>();
-
-        for (Student student : entityList) {
-            dtos.add(convertToDTO(student));
+        if (entityList != null) {
+            for (Student student : entityList) {
+                dtos.add(convertToDTO(student));
+            }
         }
-
         return dtos;
     }
 }
