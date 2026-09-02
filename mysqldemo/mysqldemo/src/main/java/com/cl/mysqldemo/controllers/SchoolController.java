@@ -25,13 +25,12 @@ public class SchoolController {
 
     @GetMapping("getAll")
     public List<SchoolDTO> getAllSchools() {
-        List<SchoolDTO> schools = SchoolDTO.convertToDTO( schoolService.getAllSchools());
-        return schools;
+        return SchoolDTO.convertToDTO(schoolService.getAllSchools());
     }
 
     @GetMapping("getById")
     public SchoolDTO getById(@RequestParam Long id) {
-        return SchoolDTO.convertToDTO( schoolService.getById(id));
+        return SchoolDTO.convertToDTO(schoolService.getById(id));
     }
 
     @PutMapping("update")
