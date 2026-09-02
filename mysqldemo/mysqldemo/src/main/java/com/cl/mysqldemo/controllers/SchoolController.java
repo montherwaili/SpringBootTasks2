@@ -19,8 +19,8 @@ public class SchoolController {
     }
 
     @PostMapping("add")
-    public Long addSchool(@RequestParam String schoolName, @RequestParam String location) {
-        return schoolService.createSchool(schoolName, location);
+    public SchoolDTO addSchool(@RequestBody SchoolDTO schoolDTO) {
+        return schoolService.createSchool(schoolDTO);
     }
 
     @GetMapping("getAll")
