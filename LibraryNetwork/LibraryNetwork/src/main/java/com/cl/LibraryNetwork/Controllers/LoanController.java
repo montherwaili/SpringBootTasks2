@@ -23,6 +23,11 @@ public class LoanController {
     @PostMapping
     public Loan create(@RequestBody Loan entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Loan update(@PathVariable Long id, @RequestBody Loan entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
