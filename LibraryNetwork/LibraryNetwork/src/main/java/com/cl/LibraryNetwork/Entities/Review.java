@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SQLDelete(sql = "UPDATE reviews SET is_active = false WHERE id = ?")
+@SQLRestriction("is_active = true")
 public class Review extends BaseClass {
 
     @Column(nullable = false)
@@ -25,4 +27,11 @@ public class Review extends BaseClass {
     @Column(name = "review_date", nullable = false)
     private LocalDateTime reviewDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 }
