@@ -16,5 +16,14 @@ public class FineService {
     public List<Fine> getAll() { return repository.findAll(); }
     public Fine getById(Long id) { return repository.findById(id).orElse(null); }
     public Fine save(Fine entity) { return repository.save(entity); }
+
+    public Fine update(Long id, Fine entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
