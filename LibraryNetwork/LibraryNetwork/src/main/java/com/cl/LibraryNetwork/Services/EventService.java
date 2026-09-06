@@ -16,5 +16,14 @@ public class EventService {
     public List<Event> getAll() { return repository.findAll(); }
     public Event getById(Long id) { return repository.findById(id).orElse(null); }
     public Event save(Event entity) { return repository.save(entity); }
+
+    public Event update(Long id, Event entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
