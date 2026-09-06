@@ -23,6 +23,11 @@ public class StaffController {
     @PostMapping
     public Staff create(@RequestBody Staff entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Staff update(@PathVariable Long id, @RequestBody Staff entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
