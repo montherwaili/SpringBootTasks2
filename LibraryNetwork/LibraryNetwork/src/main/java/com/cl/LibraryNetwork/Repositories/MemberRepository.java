@@ -1,4 +1,11 @@
 package com.cl.LibraryNetwork.Repositories;
 
-public interface MemberRepository {
+import com.cl.LibraryNetwork.Entities.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+
+@Repository
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Optional<Member> findByEmail(String email);
 }
