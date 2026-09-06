@@ -23,6 +23,11 @@ public class MemberController {
     @PostMapping
     public Member create(@RequestBody Member entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Member update(@PathVariable Long id, @RequestBody Member entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
