@@ -23,6 +23,11 @@ public class BookController {
     @PostMapping
     public Book create(@RequestBody Book entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Book update(@PathVariable Long id, @RequestBody Book entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
