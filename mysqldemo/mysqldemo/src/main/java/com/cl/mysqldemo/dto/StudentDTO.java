@@ -1,6 +1,7 @@
 package com.cl.mysqldemo.dto;
 
 import com.cl.mysqldemo.entities.Student;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentDTO {
 
+    @Positive
     private Long studentId;
+
     private String studentName;
     private String major;
     private String gender;

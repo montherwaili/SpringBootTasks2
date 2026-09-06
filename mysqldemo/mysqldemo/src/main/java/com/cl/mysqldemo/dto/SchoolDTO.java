@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SchoolDTO {
+    @Positive
     private Long schoolId;
     private String schoolName;
     private String schoolLocation;
