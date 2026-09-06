@@ -23,6 +23,11 @@ public class FineController {
     @PostMapping
     public Fine create(@RequestBody Fine entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Fine update(@PathVariable Long id, @RequestBody Fine entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
