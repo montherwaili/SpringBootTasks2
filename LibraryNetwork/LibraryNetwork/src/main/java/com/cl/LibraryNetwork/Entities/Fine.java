@@ -3,6 +3,8 @@ package com.cl.LibraryNetwork.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,6 +16,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SQLDelete(sql = "UPDATE fines SET is_active = false WHERE id = ?")
+@SQLRestriction("is_active = true")
 public class Fine extends BaseClass {
 
     @Column(nullable = false, precision = 10, scale = 2)
@@ -28,4 +32,11 @@ public class Fine extends BaseClass {
     @Column(name = "issued_date", nullable = false)
     private LocalDate issuedDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "loan_id", nullable = false)
+    private Loan loan;
 }
