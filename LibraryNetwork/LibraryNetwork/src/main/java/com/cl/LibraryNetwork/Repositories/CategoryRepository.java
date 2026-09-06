@@ -1,4 +1,8 @@
 package com.cl.LibraryNetwork.Repositories;
 
-public interface CategoryRepository {
-}
+import com.cl.LibraryNetwork.Entities.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, Long> {}
