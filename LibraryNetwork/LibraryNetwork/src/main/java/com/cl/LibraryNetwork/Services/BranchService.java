@@ -1,6 +1,5 @@
 package com.cl.LibraryNetwork.Services;
 
-
 import com.cl.LibraryNetwork.Entities.Branch;
 import com.cl.LibraryNetwork.Repositories.BranchRepository;
 import org.springframework.stereotype.Service;
@@ -17,5 +16,14 @@ public class BranchService {
     public List<Branch> getAll() { return repository.findAll(); }
     public Branch getById(Long id) { return repository.findById(id).orElse(null); }
     public Branch save(Branch entity) { return repository.save(entity); }
+
+    public Branch update(Long id, Branch entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
