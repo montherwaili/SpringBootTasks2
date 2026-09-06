@@ -3,6 +3,8 @@ package com.cl.LibraryNetwork.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SQLDelete(sql = "UPDATE events SET is_active = false WHERE id = ?")
+@SQLRestriction("is_active = true")
 public class Event extends BaseClass {
 
     @Column(nullable = false, length = 150)
@@ -24,4 +28,7 @@ public class Event extends BaseClass {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "branch_id", nullable = false)
+    private Branch branch;
 }
