@@ -16,5 +16,14 @@ public class MemberService {
     public List<Member> getAll() { return repository.findAll(); }
     public Member getById(Long id) { return repository.findById(id).orElse(null); }
     public Member save(Member entity) { return repository.save(entity); }
+
+    public Member update(Long id, Member entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
