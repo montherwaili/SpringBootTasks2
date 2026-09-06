@@ -16,5 +16,14 @@ public class ReservationService {
     public List<Reservation> getAll() { return repository.findAll(); }
     public Reservation getById(Long id) { return repository.findById(id).orElse(null); }
     public Reservation save(Reservation entity) { return repository.save(entity); }
+
+    public Reservation update(Long id, Reservation entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
