@@ -23,6 +23,11 @@ public class BranchController {
     @PostMapping
     public Branch create(@RequestBody Branch entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Branch update(@PathVariable Long id, @RequestBody Branch entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
