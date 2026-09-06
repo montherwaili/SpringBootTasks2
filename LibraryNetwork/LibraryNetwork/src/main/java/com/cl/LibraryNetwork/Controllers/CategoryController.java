@@ -23,6 +23,11 @@ public class CategoryController {
     @PostMapping
     public Category create(@RequestBody Category entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Category update(@PathVariable Long id, @RequestBody Category entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
