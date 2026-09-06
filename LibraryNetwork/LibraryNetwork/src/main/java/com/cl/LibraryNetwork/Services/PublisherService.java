@@ -16,5 +16,14 @@ public class PublisherService {
     public List<Publisher> getAll() { return repository.findAll(); }
     public Publisher getById(Long id) { return repository.findById(id).orElse(null); }
     public Publisher save(Publisher entity) { return repository.save(entity); }
+
+    public Publisher update(Long id, Publisher entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
