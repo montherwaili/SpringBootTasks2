@@ -23,6 +23,11 @@ public class ReservationController {
     @PostMapping
     public Reservation create(@RequestBody Reservation entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Reservation update(@PathVariable Long id, @RequestBody Reservation entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
