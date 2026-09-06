@@ -16,5 +16,14 @@ public class LoanService {
     public List<Loan> getAll() { return repository.findAll(); }
     public Loan getById(Long id) { return repository.findById(id).orElse(null); }
     public Loan save(Loan entity) { return repository.save(entity); }
+
+    public Loan update(Long id, Loan entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
