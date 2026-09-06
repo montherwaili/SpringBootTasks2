@@ -23,6 +23,11 @@ public class ReviewController {
     @PostMapping
     public Review create(@RequestBody Review entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Review update(@PathVariable Long id, @RequestBody Review entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
