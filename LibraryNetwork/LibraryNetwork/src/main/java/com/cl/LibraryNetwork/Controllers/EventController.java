@@ -23,6 +23,11 @@ public class EventController {
     @PostMapping
     public Event create(@RequestBody Event entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Event update(@PathVariable Long id, @RequestBody Event entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
