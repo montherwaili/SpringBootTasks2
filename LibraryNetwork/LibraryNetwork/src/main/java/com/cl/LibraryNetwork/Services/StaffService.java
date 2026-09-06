@@ -16,5 +16,14 @@ public class StaffService {
     public List<Staff> getAll() { return repository.findAll(); }
     public Staff getById(Long id) { return repository.findById(id).orElse(null); }
     public Staff save(Staff entity) { return repository.save(entity); }
+
+    public Staff update(Long id, Staff entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
