@@ -23,6 +23,11 @@ public class AuthorController {
     @PostMapping
     public Author create(@RequestBody Author entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Author update(@PathVariable Long id, @RequestBody Author entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
