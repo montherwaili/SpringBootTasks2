@@ -23,6 +23,11 @@ public class PublisherController {
     @PostMapping
     public Publisher create(@RequestBody Publisher entity) { return service.save(entity); }
 
+    @PutMapping("/{id}")
+    public Publisher update(@PathVariable Long id, @RequestBody Publisher entity) {
+        return service.update(id, entity);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
