@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SQLDelete(sql = "UPDATE reservations SET is_active = false WHERE id = ?")
+@SQLRestriction("is_active = true")
 public class Reservation extends BaseClass {
 
     @Column(name = "reservation_date", nullable = false)
@@ -23,4 +25,11 @@ public class Reservation extends BaseClass {
     @Column(nullable = false, length = 30)
     private String status;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 }
