@@ -16,5 +16,14 @@ public class ReviewService {
     public List<Review> getAll() { return repository.findAll(); }
     public Review getById(Long id) { return repository.findById(id).orElse(null); }
     public Review save(Review entity) { return repository.save(entity); }
+
+    public Review update(Long id, Review entity) {
+        if (repository.existsById(id)) {
+            entity.setId(id);
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public void delete(Long id) { repository.deleteById(id); }
 }
