@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class FineDTO {
     private Long id;
-    private Double amount;
+    private BigDecimal amount;
     private Long loanId;
 }
