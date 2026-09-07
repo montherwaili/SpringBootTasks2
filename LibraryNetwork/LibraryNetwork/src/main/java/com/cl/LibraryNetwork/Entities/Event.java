@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,7 +24,7 @@ public class Event extends BaseClass {
     private String title;
 
     @Column(name = "event_date", nullable = false)
-    private LocalDateTime eventDate;
+    private LocalDate eventDate;
 
     @Column(columnDefinition = "TEXT")
     private String description;
