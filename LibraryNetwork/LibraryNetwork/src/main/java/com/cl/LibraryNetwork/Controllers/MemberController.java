@@ -1,33 +1,46 @@
 package com.cl.LibraryNetwork.Controllers;
 
+
 import com.cl.LibraryNetwork.Entities.Member;
 import com.cl.LibraryNetwork.Services.MemberService;
+import com.cl.LibraryNetwork.dto.MemberDTO;
+import com.cl.LibraryNetwork.mapper.MemberMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/members")
+@RequiredArgsConstructor
 public class MemberController {
-    private final MemberService service;
 
-    public MemberController(MemberService service) {
-        this.service = service;
+    private final MemberService memberService;
+    private final MemberMapper memberMapper;
+
+    @PostMapping
+    public MemberDTO createMember(@RequestBody Member member) {
+        return memberMapper.convertToDTO(memberService.save(member));
     }
 
     @GetMapping
-    public List<Member> getAll() { return service.getAll(); }
+    public List<MemberDTO> getAllMembers() {
+        return memberMapper.convertToDTO(memberService.findAll());
+    }
 
     @GetMapping("/{id}")
-    public Member getById(@PathVariable Long id) { return service.getById(id); }
-
-    @PostMapping
-    public Member create(@RequestBody Member entity) { return service.save(entity); }
+    public MemberDTO getMemberById(@PathVariable Long id) {
+        return memberMapper.convertToDTO(memberService.findById(id));
+    }
 
     @PutMapping("/{id}")
-    public Member update(@PathVariable Long id, @RequestBody Member entity) {
-        return service.update(id, entity);
+    public MemberDTO updateMember(@PathVariable Long id, @RequestBody Member member) {
+        member.setId(id);
+        return memberMapper.convertToDTO(memberService.save(member));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { service.delete(id); }
+    public void deleteMember(@PathVariable Long id) {
+        memberService.deleteById(id);
+    }
 }
