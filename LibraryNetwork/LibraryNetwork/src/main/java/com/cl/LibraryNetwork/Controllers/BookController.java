@@ -1,33 +1,46 @@
 package com.cl.LibraryNetwork.Controllers;
 
+
 import com.cl.LibraryNetwork.Entities.Book;
 import com.cl.LibraryNetwork.Services.BookService;
+import com.cl.LibraryNetwork.dto.BookDTO;
+import com.cl.LibraryNetwork.mapper.BookMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
+@RequiredArgsConstructor
 public class BookController {
-    private final BookService service;
 
-    public BookController(BookService service) {
-        this.service = service;
+    private final BookService bookService;
+    private final BookMapper bookMapper;
+
+    @PostMapping
+    public BookDTO createBook(@RequestBody Book book) {
+        return bookMapper.convertToDTO(bookService.save(book));
     }
 
     @GetMapping
-    public List<Book> getAll() { return service.getAll(); }
+    public List<BookDTO> getAllBooks() {
+        return bookMapper.convertToDTO(bookService.findAll());
+    }
 
     @GetMapping("/{id}")
-    public Book getById(@PathVariable Long id) { return service.getById(id); }
-
-    @PostMapping
-    public Book create(@RequestBody Book entity) { return service.save(entity); }
+    public BookDTO getBookById(@PathVariable Long id) {
+        return bookMapper.convertToDTO(bookService.findById(id));
+    }
 
     @PutMapping("/{id}")
-    public Book update(@PathVariable Long id, @RequestBody Book entity) {
-        return service.update(id, entity);
+    public BookDTO updateBook(@PathVariable Long id, @RequestBody Book book) {
+        book.setId(id);
+        return bookMapper.convertToDTO(bookService.save(book));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { service.delete(id); }
+    public void deleteBook(@PathVariable Long id) {
+        bookService.deleteById(id);
+    }
 }
